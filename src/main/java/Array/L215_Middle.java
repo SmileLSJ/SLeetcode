@@ -87,5 +87,44 @@ public class L215_Middle {
         arr[b] = temp;
     }
 
+    //使用快排来进行获取
+    public int fastSort2(int[] arr,int start,int end ,int k){
+
+        int l = start;
+        int r = end;
+
+        int middle =  arr[l];
+
+        while(l<r){
+
+            while(l<r && arr[r]>=middle){
+                r--;
+            }
+
+            if(l<r){
+                arr[r--]=arr[l];
+            }
+
+            while(l<r && arr[l]<=middle){
+                l++;
+            }
+
+            if(l<r){
+                arr[l++]=arr[r];
+            }
+        }
+
+        arr[l] = middle;
+
+        if(l==k){
+            return l;
+        }else if(l>k){
+            return fastSort2(arr,middle+1,end,k);
+        }else{
+            return fastSort2(arr, start, middle - 1, k);
+        }
+    }
+
+
 
 }

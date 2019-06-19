@@ -65,4 +65,25 @@ public class L80_Middle {
 
         removeDuplicates(arr);
     }
+
+
+    public int removeDuplicates3(int[] nums) {
+
+        int k = 0;//[0,K)保留不存在多个的
+
+        int count  = 0;//在2以内，不需要更改元素
+
+        for(int i=0;i<nums.length;i++){
+
+            if(i==0 || nums[i]==nums[i-1]) count++;
+            if(nums[i]!=nums[i-1]) count=1;
+
+            if(count<=2){
+                nums[k++] = nums[i];
+            }
+        }
+
+        return k;
+
+    }
 }

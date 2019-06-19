@@ -1,11 +1,14 @@
 package Array;
 
+import java.util.Set;
+
 /**
  * Created by smile on 2019/6/14.
  */
 public class L283_Easy {
 
 
+    //覆盖方法
     public static void moveZeroes2(int[] nums){
 
         int k = 0;
@@ -19,27 +22,18 @@ public class L283_Easy {
         }
     }
 
-    public static void moveZeroes(int[] nums) {
 
-        if(nums==null) return;
-        int i = 0;//第一个为0的位置
+    //对调方法
+    public static void moveZeros4(int[] nums){
 
-        for(;i<nums.length;i++){
+        int k = 0; //[0,k)保存非0的数值
 
-            if(nums[i]!=0) continue;
+        for(int i = 0;i<nums.length;i++){
 
-            int j = i+1;//第一个非0的位置
-            while (j<nums.length){
-                if(nums[j]!=0)break;
-                else j++;
-
+            if(nums[i]!=0){
+                swap(nums,k++,i);
             }
-
-            if(j==nums.length) break;
-
-            swap(nums,i,j);
         }
-
     }
 
     public static void swap(int[] arr,int i,int j){
@@ -48,10 +42,11 @@ public class L283_Easy {
         arr[j]=tmp;
     }
 
+
     public static void main(String[] args) {
-//        int[] arr = {1,3,0,5,4,0,7};
         int[] arr = {0,1,0,2,7};
 
-        moveZeroes(arr);
+        moveZeroes2(arr);
+
     }
 }
